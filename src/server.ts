@@ -5,15 +5,13 @@ import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
-import SCHEMA from './schema';
-import { dataSources } from './dataSource';
+import { schema } from './schema'
+import { dataSources } from './source';
 const app = express();
 const server = new ApolloServer({
-  schema: SCHEMA,
+  schema,
   dataSources,
-  validationRules: [depthLimit(7)],
-  introspection: true,
-  playground: true
+  validationRules: [depthLimit(7)]
 });
 const corsOpt = cors({ origin: true })
 app.use('*', corsOpt);

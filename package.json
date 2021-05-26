@@ -5,6 +5,7 @@
   "main": "src/server.ts",
   "dependencies": {
     "apollo-datasource-rest": "^0.13.0",
+    "apollo-link-rest": "^0.8.0-beta.0",
     "apollo-server-express": "^2.24.1",
     "axios": "^0.21.1",
     "camelcase-keys": "^6.2.2",
@@ -15,6 +16,7 @@
     "helmet": "^4.6.0",
     "http": "0.0.1-security",
     "ncp": "^2.0.0",
+    "qs": "^6.10.1",
     "save-dev": "^0.0.1-security"
   },
   "devDependencies": {
