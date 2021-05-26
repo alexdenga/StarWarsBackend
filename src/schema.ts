@@ -21,15 +21,19 @@ type PeopleResponse {
 }
 
 type Query {
-  allPeople(page: Int): PeopleResponse
+  allPeople: PeopleResponse
+  allPeopleByPage(page: Int): PeopleResponse
   personDetails(search: String!): PeopleResponse
 }
 `;
 
 const resolvers: IResolvers = {
   Query: {
-    allPeople(_, { page }, {dataSources}) {
-      return dataSources.StarWarsAPI.AllPeople(page)
+    allPeople(_, {}, {dataSources}) {
+      return dataSources.StarWarsAPI.allPeople()
+    },
+    allPeopleByPage(_, { page }, {dataSources}) {
+      return dataSources.StarWarsAPI.allPeopleByPage(page)
     },
     personDetails(_, { search }, {dataSources}) {
         return dataSources.StarWarsAPI.SearchName(search)

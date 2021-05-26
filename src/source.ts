@@ -8,7 +8,11 @@ export class StarWarsAPI extends RESTDataSource {
         super()
         this.baseURL = API_URL
     }
-    async AllPeople(page: number) {
+    async allPeople() {
+        const data = await this.get('people');
+        return camelCaseKeys(data, {deep: true});
+    }
+    async allPeopleByPage(page: number) {
         const data = await this.get('people', {page: page});
         return camelCaseKeys(data, {deep: true});
     }
