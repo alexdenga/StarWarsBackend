@@ -7,11 +7,7 @@ type People {
   mass: String!
   gender: String!
   homeworld: String!
-  hair_color: String!
-  skin_color: String!
-  eye_color: String!
 }
-
 
 type PeopleResponse {
   count: Int!

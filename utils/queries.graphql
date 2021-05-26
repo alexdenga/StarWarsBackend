@@ -30,9 +30,6 @@ allPeople{
 
 query{
 personDetails(search:"Anakin Skywalker"){
-  count,
-  next,
-  previous,
   results {
     name,
     gender,

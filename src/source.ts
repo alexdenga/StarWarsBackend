@@ -2,7 +2,6 @@ import { RESTDataSource } from 'apollo-datasource-rest';
 import camelCaseKeys from 'camelcase-keys';
 
 const API_URL = 'https://swapi.dev/api/';
-
 export class StarWarsAPI extends RESTDataSource {
     constructor() {
         super()
