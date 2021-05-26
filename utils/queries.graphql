@@ -1,5 +1,20 @@
 query{
-allPeople(page:3){
+allPeopleByPage(page:1){
+  count,
+  next,
+  previous,
+  results {
+    name,
+    gender,
+    mass,
+    height,
+    homeworld
+  }
+}
+}
+
+query{
+allPeople{
   count,
   next,
   previous,
