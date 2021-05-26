@@ -5,15 +5,19 @@ import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
 import helmet from 'helmet';
-import schema from '../src/schema/schema';
+import SCHEMA from './schema';
+import { dataSources } from './dataSource';
 const app = express();
 const server = new ApolloServer({
-  schema,
+  schema: SCHEMA,
+  dataSources,
   validationRules: [depthLimit(7)],
+  introspection: true,
+  playground: true
 });
 const corsOpt = cors({ origin: true })
 app.use('*', corsOpt);
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: (process.env.NODE_ENV === 'production') ? undefined : false }));
 app.use(compression());
 server.applyMiddleware({ app, path: '/graphql' });
 const httpServer = createServer(app);

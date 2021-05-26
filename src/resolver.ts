@@ -1,8 +1,15 @@
 import { IResolvers } from 'graphql-tools';
+
 const resolverMap: IResolvers = {
   Query: {
-    helloWorld(_: void, args: void): string {
-  return `👋 Hello world! 👋`;
+    allPeople(_, { page }, {dataSources}) {
+      return dataSources.StarWarsAPI.Pages(page)
+    },
+    peoplePages(_, { page }, {dataSources}) {
+        return dataSources.StarWarsAPI.Pages(page)
+    },
+    personDetails(_, { name }, {dataSources}) {
+        return dataSources.StarWarsAPI.SearchName(name)
     },
   },
 };
